@@ -1,4 +1,4 @@
-name: "Run Pest"
+name: "Run Laravel Tests (Pest) (DDD-version)"
 
 on: [ push, pull_request ]
 
