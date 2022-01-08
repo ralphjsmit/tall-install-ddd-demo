@@ -1,0 +1,57 @@
+name: "Update Demo Project on new Release"
+
+on:
+  push:
+  repository_dispatch:
+    types: [package_released]
+
+jobs:
+  update:
+    name: Update project code
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          extensions: pcntl
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Install Laravel Installer
+        run: composer global require laravel/installer
+
+      - name: Update code
+        run: |
+          ls -la .
+          pwd
+          ls -la .
+          rm -rf laravel-installation
+          laravel new laravel-installation
+          cd laravel-installation
+          composer require ralphjsmit/tall-install
+          php artisan tall-install --browsersync --pest --ddd
+          composer dump-autoload
+          composer upgrade
+          rm composer.lock
+          cd ..
+          cp -R laravel-installation/. .
+          rm -rf laravel-installation
+          pwd
+          ls -la .
+
+
+      - name: Commit updated project files
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update project files"
+          git fetch
+          git branch -u origin/main
+          git rebase
+          git push -f origin main
