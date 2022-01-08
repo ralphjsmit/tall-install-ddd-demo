@@ -16,7 +16,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.8",
-        "ralphjsmit/tall-install": "^1.0",
+        "ralphjsmit/tall-install": "^1.1",
         "usernotnull/tall-toasts": "^1.3"
     },
     "require-dev": {
