@@ -1,7 +1,6 @@
 name: "Update Demo Project on new Release"
 
 on:
-  push:
   repository_dispatch:
     types: [package_released]
 
