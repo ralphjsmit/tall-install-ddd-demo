@@ -26,9 +26,6 @@ jobs:
 
       - name: Update code
         run: |
-          ls -la .
-          pwd
-          ls -la .
           rm -rf laravel-installation
           laravel new laravel-installation
           cd laravel-installation
@@ -40,9 +37,6 @@ jobs:
           cd ..
           cp -R laravel-installation/. .
           rm -rf laravel-installation
-          pwd
-          ls -la .
-
 
       - name: Commit updated project files
         run: |
