@@ -18,7 +18,9 @@ mix.js('resources/js/app.js', 'public/js')
     .version();
 
 mix.minify('public/css/app.css');
-mix.minify('public/js/app.js');/* Browsersync configuration with Laravel Valet */
+mix.minify('public/js/app.js');
+
+/* Browsersync configuration with Laravel Valet */
 mix.disableSuccessNotifications();
 
 const domain = 'laravel-installation.test';
@@ -32,5 +34,5 @@ mix.browserSync({
         key: homedir + '/.config/valet/Certificates/' + domain + '.key',
         cert: homedir + '/.config/valet/Certificates/' + domain + '.crt'
     },
-    notify: false, //Disable notifications
+    notify: false, // Disable notifications
 })
