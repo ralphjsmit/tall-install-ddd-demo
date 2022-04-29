@@ -2,6 +2,9 @@
 /node_modules.nosync
 /public/hot
 /public/storage
+/public/css/*.css
+/public/js/*.js
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /vendor.nosync
